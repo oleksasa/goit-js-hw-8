@@ -68,7 +68,6 @@ const images = [
 
 const galleryContainer = document.querySelector('.gallery');
 
-
 images.forEach(({ preview, original, description }) => {
   const listItem = document.createElement('li');
   const link = document.createElement('a');
@@ -102,23 +101,24 @@ galleryContainer.addEventListener('click', function (event) {
 
     function handleKeyPress(event) {
       if (event.key === 'Escape') lightbox.close();
-    };
+    }
 
-    const lightbox =
-      basicLightbox.create(`
-      <img 
+    const lightbox = basicLightbox.create(
+      ` <img 
         src="${originalUrl}"
         alt="Image"
         width = "1112"
         height = "640" />
-      `, {
+      `,
+      {
         onShow: () => {
           document.addEventListener('keydown', handleKeyPress);
         },
         onClose: () => {
           document.removeEventListener('keydown', handleKeyPress);
-        }
-      });
+        },
+      }
+    );
     lightbox.show();
-  }  
+  }
 });
